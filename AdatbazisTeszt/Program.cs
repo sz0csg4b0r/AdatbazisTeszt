@@ -10,6 +10,10 @@ internal class Program
 
     private static void Main(string[] args)
     {
+<<<<<<<<< Temporary merge branch 1
+=========
+        //Console.WriteLine(connectionString);
+>>>>>>>>> Temporary merge branch 2
         DBCheck(connectionString);
     }
 
