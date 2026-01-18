@@ -15,7 +15,6 @@ internal class Program
         SelectFromTable("orszagok", connectionString);
         AdatBetoltes(adatok);
         
-
     }
 
     private static void AdatBetoltes(DataTable adatok)
