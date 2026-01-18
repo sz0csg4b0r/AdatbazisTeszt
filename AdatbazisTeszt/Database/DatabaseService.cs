@@ -1,10 +1,13 @@
 ﻿using MySqlConnector;
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+=======
+>>>>>>> 05bac0871488d3bf4583d4878547b1fe6b0e52d0
 
 namespace AdatbazisTeszt.Database
 {
