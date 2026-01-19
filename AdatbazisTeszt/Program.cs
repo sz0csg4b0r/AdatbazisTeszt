@@ -5,7 +5,7 @@ using System.Data;
 internal class Program
 {
     public static readonly string connectionString 
-        = "Server=localhost;Database=foldrajz;User=root;";
+        = "Server=localhost;Database=11a_foldrajz;User=root;";
     public static DataTable adatok = new DataTable();
     public static List<Orszag> orszagLista  = new List<Orszag>();
 
@@ -14,7 +14,30 @@ internal class Program
         //DBCheck(connectionString);
         SelectFromTable("orszagok", connectionString);
         AdatBetoltes(adatok);
+        OrszagTorles(orszagLista);
         
+    }
+
+    private static void OrszagTorles(List<Orszag> orszagLista)
+    {
+        foreach (var item in orszagLista)
+        {
+            if (item.orszag == "LITVÁNIA")
+            {
+                Console.WriteLine("Litvánia elérhető az adatbázisban");
+            }
+        }
+
+        foreach (var item in orszagLista)
+        {
+            if(item.orszag == "LITVÁNIA")
+            {
+                int eredmeny = DatabaseService.DeleteById(connectionString, "orszagok", item.id);
+                Console.WriteLine(eredmeny == 1 ? $"A{item.id}-hoz tartozó ország törölve az adatbázisból" : $"Adatbázisban nem található {item.id} azonosító");
+            }
+        }
+
+       
     }
 
     private static void AdatBetoltes(DataTable adatok)
@@ -41,6 +64,7 @@ internal class Program
             orszag.telefon = o.Field<int>(14);
             orszag.gdp = o.Field<int>(15);
             orszag.kat = o.Field<int>(16);
+
             orszagLista.Add(orszag);
         }
     }

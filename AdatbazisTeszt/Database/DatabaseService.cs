@@ -47,5 +47,19 @@ namespace AdatbazisTeszt.Database
             return dataTable;
 
         }
+
+
+        public static int DeleteById(string connectionString, string tableName, int id)
+        {
+            using var connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            using var command = new MySqlCommand($"delete from {tableName} where id=@id", connection);
+            command.Parameters.AddWithValue("@id", id);
+
+            return command.ExecuteNonQuery();
+            //1 = done, 0 = id nem létezik
+
+        }
     }
 }
